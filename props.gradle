@@ -1,0 +1,2 @@
+apply from: "${buildscript.sourceFile.parentFile}/dependencies.gradle"
+apply from: "${buildscript.sourceFile.parentFile}/proguard.gradle"

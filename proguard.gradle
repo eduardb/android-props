@@ -1,0 +1,10 @@
+ext {
+    proguard = { buildType, defaultProguard ->
+        buildType.proguardFiles += defaultProguard
+        buildType.proguardFiles += "${buildscript.sourceFile.parentFile}/proguard-rules.pro"
+        buildType.proguardFiles += "${buildscript.sourceFile.parentFile}/proguard-retrofit2-rules.pro"
+        buildType.proguardFiles += "${buildscript.sourceFile.parentFile}/proguard-okhttp3-rules.pro"
+        buildType.proguardFiles += "${buildscript.sourceFile.parentFile}/proguard-okio-rules.pro"
+        buildType.proguardFiles += "${buildscript.sourceFile.parentFile}/proguard-gson-rules.pro"
+    }
+}
