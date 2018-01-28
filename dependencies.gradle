@@ -9,7 +9,7 @@ ext {
             anko          : '0.10.4',
             archLifecycle : '1.0.0',
             dagger        : '2.14.1',
-            kotlin        : '1.2.10',
+            kotlin        : '1.2.21',
             okHttp        : '3.9.1',
             retrofit      : '2.3.0',
             supportLibrary: '27.0.2',
