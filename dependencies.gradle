@@ -7,7 +7,7 @@ ext {
                     buildTools: '27.0.3'
             ],
             anko          : '0.10.4',
-            archLifecycle : '1.0.0',
+            archLifecycle : '1.1.0',
             dagger        : '2.14.1',
             kotlin        : '1.2.21',
             okHttp        : '3.9.1',
@@ -26,6 +26,7 @@ ext {
 
     libraries = [
             app    : [
+                    androidKtx                  : "androidx.core:core-ktx:0.1",
                     ankoCommons                 : "org.jetbrains.anko:anko-commons:${versions.anko}",
                     archLifecycleExtensions     : "android.arch.lifecycle:extensions:${versions.archLifecycle}",
                     archLifecycleCompiler       : "android.arch.lifecycle:compiler:${versions.archLifecycle}",
@@ -49,8 +50,8 @@ ext {
                     retrofitGsonConverter       : "com.squareup.retrofit2:converter-gson:${versions.retrofit}",
                     retrofitRxJava2Adapter      : "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofit}",
                     rxAndroid                   : 'io.reactivex.rxjava2:rxandroid:2.0.1',
-                    rxBindingKotlin             : 'com.jakewharton.rxbinding2:rxbinding-kotlin:2.0.0',
-                    rxJava2                     : 'io.reactivex.rxjava2:rxjava:2.1.8',
+                    rxBindingKotlin             : 'com.jakewharton.rxbinding2:rxbinding-kotlin:2.1.0',
+                    rxJava2                     : 'io.reactivex.rxjava2:rxjava:2.1.9',
                     rxKotlin                    : 'io.reactivex.rxjava2:rxkotlin:2.1.0',
                     rxRelay                     : 'com.jakewharton.rxrelay2:rxrelay:2.0.0'
             ],
@@ -75,7 +76,7 @@ ext {
 
             test   : [
                     junit          : 'junit:junit:4.12',
-                    kluent         : 'org.amshove.kluent:kluent:1.33',
+                    kluent         : 'org.amshove.kluent:kluent:1.34',
                     kotlinTestJunit: "org.jetbrains.kotlin:kotlin-test-junit:${versions.kotlin}",
                     mockitoKotlin  : 'com.nhaarman:mockito-kotlin:1.5.0'
             ],
