@@ -9,6 +9,7 @@ ext {
             anko          : '0.10.4',
             archLifecycle : '1.1.0',
             dagger        : '2.14.1',
+            firebase      : '11.8.0',
             kotlin        : '1.2.21',
             okHttp        : '3.9.1',
             retrofit      : '2.3.0',
@@ -18,15 +19,15 @@ ext {
     ]
 
     gradlePlugins = [
-            androidTools: 'com.android.tools.build:gradle:3.0.1',
-            kotlin      : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
-            screenshot  : 'com.facebook.testing.screenshot:plugin:0.4.2',
-            shot        : 'com.karumi:shot:1.0.0'
+            androidTools  : 'com.android.tools.build:gradle:3.0.1',
+            googleServices: 'com.google.gms:google-services:3.2.0',
+            kotlin        : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
+            shot          : 'com.karumi:shot:2.0.0'
     ]
 
     libraries = [
             app    : [
-                    androidKtx                  : "androidx.core:core-ktx:0.1",
+                    androidKtx                  : 'androidx.core:core-ktx:0.1',
                     ankoCommons                 : "org.jetbrains.anko:anko-commons:${versions.anko}",
                     archLifecycleExtensions     : "android.arch.lifecycle:extensions:${versions.archLifecycle}",
                     archLifecycleCompiler       : "android.arch.lifecycle:compiler:${versions.archLifecycle}",
@@ -37,6 +38,8 @@ ext {
                     daggerAndroidProcessor      : "com.google.dagger:dagger-android-processor:${versions.dagger}",
                     daggerAndroidSupport        : "com.google.dagger:dagger-android-support:${versions.dagger}",
                     daggerCompiler              : "com.google.dagger:dagger-compiler:${versions.dagger}",
+
+                    firebaseCore                : "com.google.firebase:firebase-core:${versions.firebase}",
 
                     javaxAnnotations            : 'org.glassfish:javax.annotation:10.0-b28',
 

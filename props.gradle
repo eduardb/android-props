@@ -1,2 +1,11 @@
 apply from: "${buildscript.sourceFile.parentFile}/dependencies.gradle"
 apply from: "${buildscript.sourceFile.parentFile}/proguard.gradle"
+
+def gitVersion() {
+    if (!System.getenv('CI_BUILD')) {
+        // don't care
+        return 1
+    }
+    def cmd = 'git rev-list HEAD --first-parent --count'
+    cmd.execute().text.trim().toInteger()
+}
