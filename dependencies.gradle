@@ -7,27 +7,29 @@ ext {
                     buildTools: '27.0.3'
             ],
             anko          : '0.10.4',
-            archLifecycle : '1.1.0',
-            dagger        : '2.14.1',
-            firebase      : '11.8.0',
-            kotlin        : '1.2.21',
+            archLifecycle : '1.1.1',
+            dagger        : '2.15',
+            firebase      : '12.0.0',
+            kotlin        : '1.2.31',
             okHttp        : '3.9.1',
             retrofit      : '2.3.0',
-            supportLibrary: '27.0.2',
+            rxBinding     : '2.1.1',
+            supportLibrary: '27.1.0',
 
             espresso      : '3.0.1'
     ]
 
     gradlePlugins = [
-            androidTools  : 'com.android.tools.build:gradle:3.0.1',
-            googleServices: 'com.google.gms:google-services:3.2.0',
+            androidTools  : 'com.android.tools.build:gradle:3.1.0',
+            easylauncher  : 'com.akaita.android:easylauncher:1.1.0',
+            googleServices: 'com.google.gms:google-services:3.2.1',
             kotlin        : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
             shot          : 'com.karumi:shot:2.0.0'
     ]
 
     libraries = [
             app    : [
-                    androidKtx                  : 'androidx.core:core-ktx:0.1',
+                    androidKtx                  : 'androidx.core:core-ktx:0.2',
                     ankoCommons                 : "org.jetbrains.anko:anko-commons:${versions.anko}",
                     archLifecycleExtensions     : "android.arch.lifecycle:extensions:${versions.archLifecycle}",
                     archLifecycleCompiler       : "android.arch.lifecycle:compiler:${versions.archLifecycle}",
@@ -52,14 +54,16 @@ ext {
                     retrofit                    : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
                     retrofitGsonConverter       : "com.squareup.retrofit2:converter-gson:${versions.retrofit}",
                     retrofitRxJava2Adapter      : "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofit}",
-                    rxAndroid                   : 'io.reactivex.rxjava2:rxandroid:2.0.1',
-                    rxBindingKotlin             : 'com.jakewharton.rxbinding2:rxbinding-kotlin:2.1.0',
-                    rxJava2                     : 'io.reactivex.rxjava2:rxjava:2.1.9',
+                    rxAndroid                   : 'io.reactivex.rxjava2:rxandroid:2.0.2',
+                    rxBindingKotlin             : "com.jakewharton.rxbinding2:rxbinding-kotlin:${versions.rxBinding}",
+                    rxBindingDesignKotlin       : "com.jakewharton.rxbinding2:rxbinding-kotlin:${versions.rxBinding}",
+                    rxJava2                     : 'io.reactivex.rxjava2:rxjava:2.1.12',
                     rxKotlin                    : 'io.reactivex.rxjava2:rxkotlin:2.1.0',
                     rxRelay                     : 'com.jakewharton.rxrelay2:rxrelay:2.0.0'
             ],
 
             kotlin : [
+                    reflect   : "org.jetbrains.kotlin:kotlin-reflect:${versions.kotlin}",
                     stdLib    : "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}",
                     stdLibJre7: "org.jetbrains.kotlin:kotlin-stdlib-jre7:${versions.kotlin}"
             ],
@@ -70,6 +74,7 @@ ext {
                     cardView               : "com.android.support:cardview-v7:${versions.supportLibrary}",
                     constraintLayout       : 'com.android.support.constraint:constraint-layout:1.0.2',
                     design                 : "com.android.support:design:${versions.supportLibrary}",
+                    fragment               : "com.android.support:support-fragment:${versions.supportLibrary}",
                     multidex               : 'com.android.support:multidex:1.0.2',
                     multidexInstrumentation: 'com.android.support:multidex-instrumentation:1.0.2',
                     recyclerview           : "com.android.support:recyclerview-v7:${versions.supportLibrary}",
@@ -79,7 +84,7 @@ ext {
 
             test   : [
                     junit          : 'junit:junit:4.12',
-                    kluent         : 'org.amshove.kluent:kluent:1.34',
+                    kluent         : 'org.amshove.kluent:kluent:1.35',
                     kotlinTestJunit: "org.jetbrains.kotlin:kotlin-test-junit:${versions.kotlin}",
                     mockitoKotlin  : 'com.nhaarman:mockito-kotlin:1.5.0'
             ],
@@ -109,6 +114,7 @@ ext {
     }
 
     commonAndroidTestDependencies = {
+        it.androidTestImplementation libraries.test.mockitoKotlin
         it.androidTestImplementation(libraries.uiTest.espressoContrib, {
             exclude group: 'com.android.support'
             exclude group: 'com.google.code.findbugs'
