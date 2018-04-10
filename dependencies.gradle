@@ -9,18 +9,19 @@ ext {
             anko          : '0.10.4',
             archLifecycle : '1.1.1',
             dagger        : '2.15',
-            firebase      : '12.0.0',
+            firebase      : '12.0.1',
+            koin          : '0.9.1',
             kotlin        : '1.2.31',
             okHttp        : '3.9.1',
             retrofit      : '2.3.0',
             rxBinding     : '2.1.1',
-            supportLibrary: '27.1.0',
+            supportLibrary: '27.1.1',
 
             espresso      : '3.0.1'
     ]
 
     gradlePlugins = [
-            androidTools  : 'com.android.tools.build:gradle:3.1.0',
+            androidTools  : 'com.android.tools.build:gradle:3.1.1',
             easylauncher  : 'com.akaita.android:easylauncher:1.1.0',
             googleServices: 'com.google.gms:google-services:3.2.1',
             kotlin        : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
@@ -29,7 +30,7 @@ ext {
 
     libraries = [
             app    : [
-                    androidKtx                  : 'androidx.core:core-ktx:0.2',
+                    androidKtx                  : 'androidx.core:core-ktx:0.3',
                     ankoCommons                 : "org.jetbrains.anko:anko-commons:${versions.anko}",
                     archLifecycleExtensions     : "android.arch.lifecycle:extensions:${versions.archLifecycle}",
                     archLifecycleCompiler       : "android.arch.lifecycle:compiler:${versions.archLifecycle}",
@@ -44,6 +45,10 @@ ext {
                     firebaseCore                : "com.google.firebase:firebase-core:${versions.firebase}",
 
                     javaxAnnotations            : 'org.glassfish:javax.annotation:10.0-b28',
+
+                    koin                        : "org.koin:koin-core:${versions.koin}",
+                    koinAndroid                 : "org.koin:koin-android:${versions.koin}",
+                    koinAndroidArchitecture     : "org.koin:koin-android-architecture:${versions.koin}",
 
                     okHttpClient                : "com.squareup.okhttp3:okhttp:${versions.okHttp}",
                     okHttpLoggingInterceptor    : "com.squareup.okhttp3:logging-interceptor:${versions.okHttp}",
@@ -85,6 +90,7 @@ ext {
             test   : [
                     junit          : 'junit:junit:4.12',
                     kluent         : 'org.amshove.kluent:kluent:1.35',
+                    koinTest       : "koin-android-architecture:${versions.koin}",
                     kotlinTestJunit: "org.jetbrains.kotlin:kotlin-test-junit:${versions.kotlin}",
                     mockitoKotlin  : 'com.nhaarman:mockito-kotlin:1.5.0'
             ],
