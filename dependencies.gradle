@@ -90,7 +90,7 @@ ext {
             test   : [
                     junit          : 'junit:junit:4.12',
                     kluent         : 'org.amshove.kluent:kluent:1.35',
-                    koinTest       : "koin-android-architecture:${versions.koin}",
+                    koinTest       : "org.koin:koin-test:${versions.koin}",
                     kotlinTestJunit: "org.jetbrains.kotlin:kotlin-test-junit:${versions.kotlin}",
                     mockitoKotlin  : 'com.nhaarman:mockito-kotlin:1.5.0'
             ],
