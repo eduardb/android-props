@@ -9,9 +9,9 @@ ext {
             anko          : '0.10.4',
             archLifecycle : '1.1.1',
             dagger        : '2.15',
-            firebase      : '12.0.1',
-            koin          : '0.9.1',
-            kotlin        : '1.2.31',
+            firebase      : '15.0.0',
+            koin          : '0.9.2',
+            kotlin        : '1.2.40',
             okHttp        : '3.9.1',
             retrofit      : '2.3.0',
             rxBinding     : '2.1.1',
@@ -21,11 +21,12 @@ ext {
     ]
 
     gradlePlugins = [
-            androidTools  : 'com.android.tools.build:gradle:3.1.1',
-            easylauncher  : 'com.akaita.android:easylauncher:1.1.0',
-            googleServices: 'com.google.gms:google-services:3.2.1',
-            kotlin        : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
-            shot          : 'com.karumi:shot:2.0.0'
+            androidTools            : 'com.android.tools.build:gradle:3.1.1',
+            dependencyGraphGenerator: 'com.vanniktech:gradle-dependency-graph-generator-plugin:0.3.0',
+            easylauncher            : 'com.akaita.android:easylauncher:1.2.0',
+            googleServices          : 'com.google.gms:google-services:3.2.1',
+            kotlin                  : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
+            shot                    : 'com.karumi:shot:2.0.0'
     ]
 
     libraries = [
@@ -70,7 +71,7 @@ ext {
             kotlin : [
                     reflect   : "org.jetbrains.kotlin:kotlin-reflect:${versions.kotlin}",
                     stdLib    : "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}",
-                    stdLibJre7: "org.jetbrains.kotlin:kotlin-stdlib-jre7:${versions.kotlin}"
+                    stdLibJdk7: "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"
             ],
 
             support: [
@@ -89,19 +90,23 @@ ext {
 
             test   : [
                     junit          : 'junit:junit:4.12',
-                    kluent         : 'org.amshove.kluent:kluent:1.35',
+                    kluent         : 'org.amshove.kluent:kluent:1.36',
                     koinTest       : "org.koin:koin-test:${versions.koin}",
                     kotlinTestJunit: "org.jetbrains.kotlin:kotlin-test-junit:${versions.kotlin}",
+                    mockitoCore    : 'org.mockito:mockito-core:2.18.0',
                     mockitoKotlin  : 'com.nhaarman:mockito-kotlin:1.5.0'
             ],
 
             uiTest : [
+                    dexOpener           : 'com.github.tmurakami:dexopener:0.12.1',
                     espressoContrib     : "com.android.support.test.espresso:espresso-contrib:${versions.espresso}",
                     espressoCore        : "com.android.support.test.espresso:espresso-core:${versions.espresso}",
                     espressoIntents     : "com.android.support.test.espresso:espresso-intents:${versions.espresso}",
                     mockWebServer       : "com.squareup.okhttp3:mockwebserver:${versions.okHttp}",
+                    mockitoAndroid      : 'org.mockito:mockito-android:2.18.0',
                     okHttpIdlingResource: 'com.jakewharton.espresso:okhttp3-idling-resource:1.0.0',
-                    supportTestRunner   : 'com.android.support.test:runner:1.0.1'
+                    supportTestRunner   : 'com.android.support.test:runner:1.0.1',
+                    fbScreenshotTesting : 'com.facebook.testing.screenshot:core:0.6.0'
             ]
     ]
 
@@ -121,6 +126,8 @@ ext {
 
     commonAndroidTestDependencies = {
         it.androidTestImplementation libraries.test.mockitoKotlin
+        it.androidTestImplementation libraries.uiTest.mockitoAndroid
+        it.androidTestImplementation libraries.uiTest.dexOpener
         it.androidTestImplementation(libraries.uiTest.espressoContrib, {
             exclude group: 'com.android.support'
             exclude group: 'com.google.code.findbugs'
@@ -136,6 +143,10 @@ ext {
         it.androidTestImplementation(libraries.uiTest.supportTestRunner, {
             exclude group: 'com.android.support', module: 'support-annotations'
         })
+        it.androidTestImplementation(libraries.uiTest.fbScreenshotTesting) {
+            exclude group: 'com.crittercism.dexmaker', module: 'dexmaker'
+            exclude group: 'com.crittercism.dexmaker', module: 'dexmaker-dx'
+        }
     }
 }
 
